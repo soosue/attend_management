@@ -17,19 +17,30 @@ public class Attendance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate date;
-    private Long memberId;
     private LocalDateTime attendTime;
     private LocalDateTime leaveTime;
+    private Long memberId;
     private Long recycleMarketId;
 
     public Attendance() {
     }
 
-    public Attendance(LocalDate date, Long memberId, LocalDateTime attendTime, LocalDateTime leaveTime, Long recycleMarketId) {
+    public Attendance(LocalDate date, LocalDateTime attendTime, Long memberId, Long recycleMarketId) {
         this.date = date;
+        this.attendTime = attendTime;
         this.memberId = memberId;
+        this.recycleMarketId = recycleMarketId;
+    }
+
+    public Attendance(LocalDate date, LocalDateTime attendTime, LocalDateTime leaveTime, Long memberId, Long recycleMarketId) {
+        this.date = date;
         this.attendTime = attendTime;
         this.leaveTime = leaveTime;
+        this.memberId = memberId;
         this.recycleMarketId = recycleMarketId;
+    }
+
+    public void leave(LocalDateTime leaveTime) {
+        this.leaveTime = leaveTime;
     }
 }
